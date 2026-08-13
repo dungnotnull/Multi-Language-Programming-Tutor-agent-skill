@@ -1,0 +1,408 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Multi-Language Programming Tutor Output Schema",
+  "description": "Schema for validating skill output responses",
+  "type": "object",
+  "properties": {
+    "response_type": {
+      "type": "string",
+      "enum": ["diagnostic", "teaching", "exercise", "error_explanation", "project", "error"],
+      "description": "Type of response"
+    },
+    "success": {
+      "type": "boolean",
+      "description": "Whether the request was processed successfully"
+    },
+    "data": {
+      "type": "object",
+      "description": "Response data payload"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "processing_time_ms": {
+          "type": "number"
+        },
+        "tokens_used": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "integer"
+            },
+            "output": {
+              "type": "integer"
+            },
+            "total": {
+              "type": "integer"
+            }
+          }
+        },
+        "methods_used": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "required": ["response_type", "success"],
+  "oneOf": [
+    {
+      "properties": {
+        "response_type": {
+          "const": "diagnostic"
+        },
+        "success": {
+          "const": true
+        },
+        "data": {
+          "$ref": "#/definitions/diagnostic_response"
+        }
+      },
+      "required": ["response_type", "success", "data"]
+    },
+    {
+      "properties": {
+        "response_type": {
+          "const": "teaching"
+        },
+        "success": {
+          "const": true
+        },
+        "data": {
+          "$ref": "#/definitions/teaching_response"
+        }
+      },
+      "required": ["response_type", "success", "data"]
+    },
+    {
+      "properties": {
+        "response_type": {
+          "const": "exercise"
+        },
+        "success": {
+          "const": true
+        },
+        "data": {
+          "$ref": "#/definitions/exercise_response"
+        }
+      },
+      "required": ["response_type", "success", "data"]
+    },
+    {
+      "properties": {
+        "response_type": {
+          "const": "error_explanation"
+        },
+        "success": {
+          "const": true
+        },
+        "data": {
+          "$ref": "#/definitions/error_explanation_response"
+        }
+      },
+      "required": ["response_type", "success", "data"]
+    },
+    {
+      "properties": {
+        "response_type": {
+          "const": "project"
+        },
+        "success": {
+          "const": true
+        },
+        "data": {
+          "$ref": "#/definitions/project_response"
+        }
+      },
+      "required": ["response_type", "success", "data"]
+    },
+    {
+      "properties": {
+        "response_type": {
+          "const": "error"
+        },
+        "success": {
+          "const": false
+        },
+        "error": {
+          "type": "object"
+        }
+      },
+      "required": ["response_type", "success", "error"]
+    }
+  ],
+  "definitions": {
+    "diagnostic_response": {
+      "type": "object",
+      "properties": {
+        "learner_profile": {
+          "type": "object",
+          "properties": {
+            "experience_level": {
+              "type": "string",
+              "enum": ["beginner", "intermediate", "advanced", "expert"]
+            },
+            "strong_concepts": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "developing_concepts": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "concept_gaps": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "recommended_path": {
+              "type": "object",
+              "properties": {
+                "priority_focus": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "suggested_projects": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "teaching_response": {
+      "type": "object",
+      "properties": {
+        "concept": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "explanation": {
+          "type": "string"
+        },
+        "analogy": {
+          "type": "string"
+        },
+        "code_examples": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "language": {
+                "type": "string"
+              },
+              "code": {
+                "type": "string"
+              },
+              "explanation": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "common_pitfalls": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pitfall": {
+                "type": "string"
+              },
+              "explanation": {
+                "type": "string"
+              },
+              "avoidance": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "practice_exercise": {
+          "type": "object"
+        }
+      }
+    },
+    "exercise_response": {
+      "type": "object",
+      "properties": {
+        "exercise_type": {
+          "type": "string"
+        },
+        "concept": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "difficulty": {
+          "type": "string"
+        },
+        "exercises": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "instructions": {
+                "type": "string"
+              },
+              "content": {
+                "type": "object"
+              },
+              "hints": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "solution": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "error_explanation_response": {
+      "type": "object",
+      "properties": {
+        "error_type": {
+          "type": "string"
+        },
+        "error_category": {
+          "type": "string",
+          "enum": ["compiler", "runtime", "logic", "style", "system"]
+        },
+        "what_it_means": {
+          "type": "string"
+        },
+        "why_it_happened": {
+          "type": "string"
+        },
+        "how_to_fix": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "corrected_code": {
+          "type": "string"
+        },
+        "prevention_strategies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "related_concepts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "project_response": {
+      "type": "object",
+      "properties": {
+        "project_name": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "difficulty": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "learning_objectives": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "number": {
+                "type": "integer"
+              },
+              "title": {
+                "type": "string"
+              },
+              "objectives": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "prerequisites": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tasks": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "resources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

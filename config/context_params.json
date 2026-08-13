@@ -1,0 +1,51 @@
+{
+  "$schema": "./config.schema.json",
+  "version": "1.0.0",
+  "metadata": {
+    "name": "context_parameters",
+    "description": "Context window management and optimization parameters",
+    "last_updated": "2025-01-04"
+  },
+  "limits": {
+    "max_total_tokens": 200000,
+    "max_input_tokens": 150000,
+    "max_output_tokens": 4096,
+    "safety_margin_tokens": 5000
+  },
+  "compression": {
+    "enabled": true,
+    "threshold_ratio": 0.8,
+    "aggressive_threshold_ratio": 0.9,
+    "methods": ["summarization", "pruning", "deduplication"]
+  },
+  "loading_strategy": {
+    "mode": "progressive",
+    "priority_sections": ["teaching_methodology", "current_language", "current_concept"],
+    "defer_sections": ["advanced_topics", "reference_materials"]
+  },
+  "token_accounting": {
+    "track_by_component": true,
+    "components": ["skill_body", "references", "user_input", "agent_output", "system_overhead"],
+    "log_threshold": 1000,
+    "alert_threshold": 10000
+  },
+  "optimization": {
+    "remove_redundant_content": true,
+    "summarize_long_sections": true,
+    "defer_non_critical_refs": true,
+    "use_compact_formats": true
+  },
+  "monitoring": {
+    "log_token_usage": true,
+    "track_compression_ratio": true,
+    "alert_on_limit_approach": true,
+    "limit_alert_threshold": 0.9
+  },
+  "caching": {
+    "enabled": true,
+    "cache_frequently_used": true,
+    "max_cached_items": 100,
+    "ttl_seconds": 3600,
+    "invalidate_on": ["config_change", "skill_update"]
+  }
+}

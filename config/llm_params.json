@@ -1,0 +1,64 @@
+{
+  "$schema": "./config.schema.json",
+  "version": "1.0.0",
+  "metadata": {
+    "name": "llm_parameters",
+    "description": "LLM model parameters and execution settings",
+    "last_updated": "2025-01-04"
+  },
+  "models": {
+    "default": "claude-opus-4-7",
+    "fallback": "claude-sonnet-4-6",
+    "fast": "claude-haiku-4-5-20251001"
+  },
+  "parameters": {
+    "temperature": {
+      "default": 0.7,
+      "creative": 0.9,
+      "precise": 0.3,
+      "educational": 0.6
+    },
+    "top_p": {
+      "default": 0.95,
+      "conservative": 0.8,
+      "exploratory": 0.99
+    },
+    "top_k": null,
+    "max_tokens": {
+      "default": 4096,
+      "long_form": 8192,
+      "short": 1024
+    }
+  },
+  "execution": {
+    "timeout_seconds": 120,
+    "stream_responses": true,
+    "include_thinking": true,
+    "thinking_budget_tokens": 1024
+  },
+  "retry": {
+    "max_attempts": 3,
+    "initial_delay_ms": 1000,
+    "max_delay_ms": 10000,
+    "backoff_multiplier": 2.0,
+    "retry_on": ["timeout", "rate_limit", "server_error"]
+  },
+  "rate_limiting": {
+    "requests_per_minute": 60,
+    "tokens_per_minute": 100000,
+    "concurrent_requests": 5,
+    "burst_allowance": 10
+  },
+  "caching": {
+    "enabled": true,
+    "max_cache_size_mb": 100,
+    "ttl_seconds": 3600,
+    "cache_key_components": ["model", "temperature", "prompt_hash"]
+  },
+  "cost_management": {
+    "track_tokens": true,
+    "max_cost_per_session_usd": 5.0,
+    "alert_threshold_usd": 3.0,
+    "budget_overhead": 0.1
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Multi-Language Programming Tutor Input Schema",
+  "description": "Schema for validating skill input requests",
+  "type": "object",
+  "definitions": {
+    "language": {
+      "type": "string",
+      "enum": ["python", "javascript", "java", "cpp", "rust", "go"],
+      "description": "Supported programming language"
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": ["beginner", "intermediate", "advanced", "expert"],
+      "description": "Difficulty level for exercises"
+    },
+    "concept": {
+      "type": "string",
+      "description": "Programming concept to teach or practice"
+    },
+    "domain": {
+      "type": "string",
+      "enum": ["web", "cli", "systems", "data", "mobile", "general"],
+      "description": "Programming domain"
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/definitions/diagnostic_request"
+    },
+    {
+      "$ref": "#/definitions/teaching_request"
+    },
+    {
+      "$ref": "#/definitions/exercise_request"
+    },
+    {
+      "$ref": "#/definitions/error_explanation_request"
+    },
+    {
+      "$ref": "#/definitions/project_request"
+    }
+  ],
+  "definitions": {
+    "diagnostic_request": {
+      "type": "object",
+      "properties": {
+        "request_type": {
+          "const": "diagnostic"
+        },
+        "learner_profile": {
+          "type": "object",
+          "properties": {
+            "experience_years": {
+              "type": "number",
+              "minimum": 0
+            },
+            "known_languages": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/language"
+              }
+            },
+            "learning_goals": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "required": ["request_type"]
+    },
+    "teaching_request": {
+      "type": "object",
+      "properties": {
+        "request_type": {
+          "const": "teach_concept"
+        },
+        "concept": {
+          "$ref": "#/definitions/concept"
+        },
+        "language": {
+          "$ref": "#/definitions/language"
+        },
+        "depth": {
+          "type": "string",
+          "enum": ["basic", "intermediate", "advanced"],
+          "default": "intermediate"
+        },
+        "include_examples": {
+          "type": "boolean",
+          "default": true
+        },
+        "include_analogies": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "required": ["request_type", "concept", "language"]
+    },
+    "exercise_request": {
+      "type": "object",
+      "properties": {
+        "request_type": {
+          "const": "generate_exercise"
+        },
+        "exercise_type": {
+          "type": "string",
+          "enum": ["parsons", "worked_example", "code_tracing", "from_scratch"]
+        },
+        "concept": {
+          "$ref": "#/definitions/concept"
+        },
+        "language": {
+          "$ref": "#/definitions/language"
+        },
+        "difficulty": {
+          "$ref": "#/definitions/difficulty"
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10,
+          "default": 1
+        }
+      },
+      "required": ["request_type", "exercise_type", "concept", "language"]
+    },
+    "error_explanation_request": {
+      "type": "object",
+      "properties": {
+        "request_type": {
+          "const": "explain_error"
+        },
+        "error_message": {
+          "type": "string"
+        },
+        "language": {
+          "$ref": "#/definitions/language"
+        },
+        "include_fix": {
+          "type": "boolean",
+          "default": true
+        },
+        "include_prevention": {
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "required": ["request_type", "error_message", "language"]
+    },
+    "project_request": {
+      "type": "object",
+      "properties": {
+        "request_type": {
+          "const": "generate_project"
+        },
+        "domain": {
+          "$ref": "#/definitions/domain"
+        },
+        "language": {
+          "$ref": "#/definitions/language"
+        },
+        "difficulty": {
+          "$ref": "#/definitions/difficulty"
+        },
+        "focus_areas": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["request_type", "domain", "language"]
+    }
+  }
+}

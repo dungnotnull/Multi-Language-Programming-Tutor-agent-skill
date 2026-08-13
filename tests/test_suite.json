@@ -1,0 +1,631 @@
+{
+  "test_suite_name": "Multilanguage Programming Tutor - Comprehensive Test Suite",
+  "version": "1.0.0",
+  "created_date": "2025-01-04",
+  "total_tests": 120,
+  "test_categories": [
+    {
+      "category": "self_explanation",
+      "description": "Test self-explanation system functionality",
+      "tests": [
+        {
+          "test_id": "SE_001",
+          "prompt": "Teach me about Python loops using a worked example. Include self-explanation prompts.",
+          "expected_output": {
+            "must_contain": ["worked example", "self-explanation prompts"],
+            "should_contain": ["Python loops", "for loop"],
+            "concept_taught": "loops"
+          }
+        },
+        {
+          "test_id": "SE_002",
+          "prompt": "I'm learning JavaScript functions. Create a worked example with scaffolding level 2.",
+          "expected_output": {
+            "must_contain": ["worked example", "scaffolding level"],
+            "should_contain": ["JavaScript", "functions"],
+            "scaffolding_level": 2
+          }
+        },
+        {
+          "test_id": "SE_003",
+          "prompt": "Assess this explanation: 'Loops repeat code multiple times. They use a counter.'",
+          "expected_output": {
+            "must_contain": ["assessment", "quality score"],
+            "explanation_quality": "adequate"
+          }
+        },
+        {
+          "test_id": "SE_004",
+          "prompt": "Generate self-explanation prompts for explaining Python dictionaries.",
+          "expected_output": {
+            "must_contain": ["prompts", "before_step", "after_step"],
+            "concept": "dictionaries"
+          }
+        },
+        {
+          "test_id": "SE_005",
+          "prompt": "Create a self-explanation exercise for Java conditionals with sentence stems.",
+          "expected_output": {
+            "must_contain": ["exercise", "sentence stems"],
+            "concept": "conditionals",
+          "scaffolding_level": "sentence_stems"
+          }
+        }
+      ]
+    },
+    {
+      "category": "visual_notional_machine",
+      "description": "Test visual notional machine and execution visualization",
+      "tests": [
+        {
+          "test_id": "VNM_001",
+          "prompt": "Create a visual execution trace for this Python code:\nfor i in range(3):\n    print(i)",
+          "expected_output": {
+            "must_contain": ["execution steps", "trace"],
+            "should_contain": ["memory snapshots", "control flow"],
+            "language": "python"
+          }
+        },
+        {
+          "test_id": "VNM_002",
+          "prompt": "Show me the memory model for executing this JavaScript code:\nlet x = 5;\nx = x + 1;",
+          "expected_output": {
+            "must_contain": ["memory", "state changes"],
+            "should_contain": ["variable tracking"],
+            "language": "javascript"
+          }
+        },
+        {
+          "test_id": "VNM_003",
+          "prompt": "Build a control flow graph for this Java if-else statement.",
+          "expected_output": {
+            "must_contain": ["control flow graph", "nodes"],
+            "should_contain": ["branches", "conditions"]
+          }
+        },
+        {
+          "test_id": "VNM_004",
+          "prompt": "Create step-by-step execution visualization for a C++ loop.",
+          "expected_output": {
+            "must_contain": ["execution steps", "iterations"],
+            "should_contain": ["loop counter", "condition checking"]
+          }
+        },
+        {
+          "test_id": "VNM_005",
+          "prompt": "Visualize the stack frames during function execution in Python.",
+          "expected_output": {
+            "must_contain": ["stack frames", "function calls"],
+            "should_contain": ["local variables", "parameters"]
+          }
+        }
+      ]
+    },
+    {
+      "category": "debugging_protocol",
+      "description": "Test systematic debugging protocol implementation",
+      "tests": [
+        {
+          "test_id": "DP_001",
+          "prompt": "Create a debugging exercise for Python indentation errors.",
+          "expected_output": {
+            "must_contain": ["debugging exercise", "protocol steps"],
+            "error_pattern": "indentation",
+            "language": "python"
+          }
+        },
+        {
+          "test_id": "DP_002",
+          "prompt": "Generate an 8-step debugging protocol guide for JavaScript errors.",
+          "expected_output": {
+            "must_contain": ["debugging protocol", "8 steps"],
+            "language": "javascript"
+          }
+        },
+        {
+          "test_id": "DP_003",
+          "prompt": "Assess this debugging approach: 'I looked at the error, fixed it, and it worked.'",
+          "expected_output": {
+            "must_contain": ["assessment", "compliance score"],
+            "systematic_rating": "inadequate"
+          }
+        },
+        {
+          "test_id": "DP_004",
+          "prompt": "What are the common error patterns for Java NullPointerException?",
+          "expected_output": {
+            "must_contain": ["error patterns", "NullPointerException"],
+            "should_contain": ["causes", "solutions", "prevention"]
+          }
+        },
+        {
+          "test_id": "DP_005",
+          "prompt": "Teach me how to debug C++ segmentation faults systematically.",
+          "expected_output": {
+            "must_contain": ["debugging", "systematic protocol"],
+            "error_type": "segmentation fault",
+            "language": "cpp"
+          }
+        }
+      ]
+    },
+    {
+      "category": "knowledge_tracing",
+      "description": "Test Bayesian knowledge tracing and adaptive learning",
+      "tests": [
+        {
+          "test_id": "KT_001",
+          "prompt": "Initialize a learner model for Python programming concepts.",
+          "expected_output": {
+            "must_contain": ["learner model", "skills"],
+            "should_contain": ["mastery probabilities"]
+          }
+        },
+        {
+          "test_id": "KT_002",
+          "prompt": "Update mastery probability for Python loops after correct answer.",
+          "expected_output": {
+            "must_contain": ["updated mastery", "probability"],
+            "skill": "python_loops"
+          }
+        },
+        {
+          "test_id": "KT_003",
+          "prompt": "Predict probability of success for JavaScript arrays exercise.",
+          "expected_output": {
+            "must_contain": ["prediction", "probability"],
+            "skill": "javascript_arrays"
+          }
+        },
+        {
+          "test_id": "KT_004",
+          "prompt": "Select optimal next exercise for learner with 0.4 mastery in Python functions.",
+          "expected_output": {
+            "must_contain": ["exercise recommendation", "learning value"],
+            "rationale": "zone of proximal development"
+          }
+        },
+        {
+          "test_id": "KT_005",
+          "prompt": "Generate a mastery report showing progress across all skills.",
+          "expected_output": {
+            "must_contain": ["mastery report", "progress"],
+            "should_contain": ["strengths", "weaknesses"]
+          }
+        }
+      ]
+    },
+    {
+      "category": "interactive_examples",
+      "description": "Test interactive example system and code execution",
+      "tests": [
+        {
+          "test_id": "IE_001",
+          "prompt": "Create an interactive example for Python lists with prediction challenges.",
+          "expected_output": {
+            "must_contain": ["interactive example", "editable code"],
+            "should_contain": ["prediction challenge", "modification tasks"],
+            "concept": "lists"
+          }
+        },
+        {
+          "test_id": "IE_002",
+          "prompt": "Execute this Python code and show output:\nprint('Hello, World!')",
+          "expected_output": {
+            "must_contain": ["execution result", "output"],
+            "output": "Hello, World!"
+          }
+        },
+        {
+          "test_id": "IE_003",
+          "prompt": "Create a modification task: change this loop to print squares instead of doubles.",
+          "expected_output": {
+            "must_contain": ["modification task", "goal"],
+            "should_contain": ["hints", "solution"]
+          }
+        },
+        {
+          "test_id": "IE_004",
+          "prompt": "Generate a comparison challenge between for-loop and while-loop approaches.",
+          "expected_output": {
+            "must_contain": ["comparison challenge", "two code snippets"],
+            "should_contain": ["comparison criteria"]
+          }
+        },
+        {
+          "test_id": "IE_005",
+          "prompt": "Create an interactive JavaScript example with live code editing.",
+          "expected_output": {
+            "must_contain": ["interactive example", "JavaScript"],
+            "editable": true
+          }
+        }
+      ]
+    },
+    {
+      "category": "language_guides",
+      "description": "Test language-specific teaching guides",
+      "tests": [
+        {
+          "test_id": "LG_001",
+          "prompt": "What are the key teaching considerations for Python beginners?",
+          "expected_output": {
+            "must_contain": ["teaching", "Python", "beginners"],
+            "should_contain": ["readability", "indentation", "error messages"]
+          }
+        },
+        {
+          "test_id": "LG_002",
+          "prompt": "Explain Java's type system for someone coming from Python.",
+          "expected_output": {
+            "must_contain": ["Java", "type system", "static typing"],
+            "should_contain": ["primitives", "objects", "comparison"]
+          }
+        },
+        {
+          "test_id": "LG_003",
+          "prompt": "What are the common pitfalls when teaching C++ pointers?",
+          "expected_output": {
+            "must_contain": ["C++", "pointers", "pitfalls"],
+            "should_contain": ["memory management", "null pointers", "dangling"]
+          }
+        },
+        {
+          "test_id": "LG_004",
+          "prompt": "Compare JavaScript's this binding to Python's self parameter.",
+          "expected_output": {
+            "must_contain": ["comparison", "this", "self"],
+            "should_contain": ["binding differences", "context"]
+          }
+        },
+        {
+          "test_id": "LG_005",
+          "prompt": "What teaching strategies work best for Rust's ownership system?",
+          "expected_output": {
+            "must_contain": ["Rust", "ownership", "teaching"],
+            "should_contain": ["borrow checker", "mental models"]
+          }
+        }
+      ]
+    },
+    {
+      "category": "parsons_problems",
+      "description": "Test Parson's problem generation and validation",
+      "tests": [
+        {
+          "test_id": "PP_001",
+          "prompt": "Generate a Parson's problem for Python loops at beginner difficulty.",
+          "expected_output": {
+            "must_contain": ["Parson's problem", "code blocks"],
+            "difficulty": "beginner",
+            "language": "python",
+            "concept": "loops"
+          }
+        },
+        {
+          "test_id": "PP_002",
+          "prompt": "Create a Parson's problem for JavaScript functions with distractors.",
+          "expected_output": {
+            "must_contain": ["Parson's problem", "distractors"],
+            "should_contain": ["incorrect blocks", "solution"]
+          }
+        },
+        {
+          "test_id": "PP_003",
+          "prompt": "Validate this Parson's problem solution: [blocks in correct order]",
+          "expected_output": {
+            "must_contain": ["validation", "correctness check"],
+            "solution_correct": true
+          }
+        },
+        {
+          "test_id": "PP_004",
+          "prompt": "Generate hints for a Parson's problem about C++ vectors.",
+          "expected_output": {
+            "must_contain": ["hints", "progressive"],
+            "concept": "vectors",
+            "language": "cpp"
+          }
+        },
+        {
+          "test_id": "PP_005",
+          "prompt": "Create an advanced Parson's problem (15 blocks) for Java ArrayList.",
+          "expected_output": {
+            "must_contain": ["Parson's problem", "15 blocks"],
+            "difficulty": "advanced",
+            "language": "java"
+          }
+        }
+      ]
+    },
+    {
+      "category": "worked_examples",
+      "description": "Test worked example and faded scaffolding system",
+      "tests": [
+        {
+          "test_id": "WE_001",
+          "prompt": "Create a worked example for Python dictionaries with scaffolding level 0.",
+          "expected_output": {
+            "must_contain": ["worked example", "complete code"],
+            "scaffolding_level": 0,
+            "concept": "dictionaries"
+          }
+        },
+        {
+          "test_id": "WE_002",
+          "prompt": "Generate a worked example with completions for Java inheritance.",
+          "expected_output": {
+            "must_contain": ["worked example", "blanks"],
+            "scaffolding_level": 2,
+            "concept": "inheritance"
+          }
+        },
+        {
+          "test_id": "WE_003",
+          "prompt": "Create a faded scaffolding exercise for JavaScript closures.",
+          "expected_output": {
+            "must_contain": ["scaffolding", "exercise"],
+            "faded_parts": true
+          }
+        },
+        {
+          "test_id": "WE_004",
+          "prompt": "Generate a worked example showing C++ RAII principles.",
+          "expected_output": {
+            "must_contain": ["worked example", "RAII"],
+            "should_contain": ["resource management", "destructor"]
+          }
+        },
+        {
+          "test_id": "WE_005",
+          "prompt": "Create a worked example for Rust ownership with explanations.",
+          "expected_output": {
+            "must_contain": ["worked example", "ownership"],
+            "language": "rust",
+            "should_contain": ["borrow checker", "lifetime"]
+          }
+        }
+      ]
+    },
+    {
+      "category": "cross_language_transfer",
+      "description": "Test cross-language concept mapping and transfer",
+      "tests": [
+        {
+          "test_id": "CLT_001",
+          "prompt": "Show how loops concept transfers between Python and JavaScript.",
+          "expected_output": {
+            "must_contain": ["loops", "comparison", "Python"],
+            "should_contain": ["JavaScript", "syntax differences"]
+          }
+        },
+        {
+          "test_id": "CLT_002",
+          "prompt": "Compare dictionary/hash map implementations across Python, Java, and JavaScript.",
+          "expected_output": {
+            "must_contain": ["dictionaries", "comparison", "3 languages"],
+            "should_contain": ["syntax", "performance"]
+          }
+        },
+        {
+          "test_id": "CLT_003",
+          "prompt": "Teach function concepts by showing Python def vs JavaScript function vs Java method.",
+          "expected_output": {
+            "must_contain": ["functions", "comparison"],
+            "languages": ["Python", "JavaScript", "Java"]
+          }
+        },
+        {
+          "test_id": "CLT_004",
+          "prompt": "Explain how C++ memory management differs from Python's automatic approach.",
+          "expected_output": {
+            "must_contain": ["memory management", "comparison"],
+            "languages": ["C++", "Python"],
+            "should_contain": ["pointers", "automatic"]
+          }
+        },
+        {
+          "test_id": "CLT_005",
+          "prompt": "What paradigm differences exist between Java (class-based) and JavaScript (prototype-based)?",
+          "expected_output": {
+            "must_contain": ["paradigm comparison", "OOP"],
+            "should_contain": ["class-based", "prototype-based", "inheritance"]
+          }
+        }
+      ]
+    },
+    {
+      "category": "error_explanation",
+      "description": "Test error message explanation and literacy system",
+      "tests": [
+        {
+          "test_id": "EE_001",
+          "prompt": "Explain this Python error: NameError: name 'x' is not defined",
+          "expected_output": {
+            "must_contain": ["error explanation", "NameError"],
+            "should_contain": ["cause", "fix", "prevention"],
+            "language": "python"
+          }
+        },
+        {
+          "test_id": "EE_002",
+          "prompt": "Teach how to understand JavaScript TypeError: is not a function",
+          "expected_output": {
+            "must_contain": ["error explanation", "TypeError"],
+            "should_contain": ["cause", "fix", "common scenarios"]
+          }
+        },
+        {
+          "test_id": "EE_003",
+          "prompt": "Explain Java NullPointerException to a beginner.",
+          "expected_output": {
+            "must_contain": ["error explanation", "NullPointerException"],
+            "should_contain": ["plain language", "examples"],
+            "beginner_friendly": true
+          }
+        },
+        {
+          "test_id": "EE_004",
+          "prompt": "What does C++ segmentation fault mean and how do I fix it?",
+          "expected_output": {
+            "must_contain": ["error explanation", "segmentation fault"],
+            "language": "cpp",
+            "should_contain": ["memory", "pointers", "fix"]
+          }
+        },
+        {
+          "test_id": "EE_005",
+          "prompt": "Create a systematic approach to teaching error literacy.",
+          "expected_output": {
+            "must_contain": ["approach", "systematic"],
+            "should_contain": ["read message", "identify type", "explain"]
+          }
+        }
+      ]
+    },
+    {
+      "category": "project_based_learning",
+      "description": "Test project-based learning and milestone system",
+      "tests": [
+        {
+          "test_id": "PBL_001",
+          "prompt": "Generate a Python CLI tool project with milestones for a beginner.",
+          "expected_output": {
+            "must_contain": ["project", "milestones"],
+            "difficulty": "beginner",
+            "language": "python",
+            "domain": "cli"
+          }
+        },
+        {
+          "test_id": "PBL_002",
+          "prompt": "Create a web development project roadmap with intermediate milestones.",
+          "expected_output": {
+            "must_contain": ["project", "roadmap"],
+            "domain": "web",
+            "milestone_count": 4
+          }
+        },
+        {
+          "test_id": "PBL_003",
+          "prompt": "Design a systems programming project in C++ for advanced learners.",
+          "expected_output": {
+            "must_contain": ["project", "C++"],
+            "difficulty": "advanced",
+            "domain": "systems"
+          }
+        }
+      ]
+    },
+    {
+      "category": "comprehensive_integration",
+      "description": "Test full integration of multiple teaching methods",
+      "tests": [
+        {
+          "test_id": "INT_001",
+          "prompt": "Teach me about functions using: worked example, Parson's problem, and code tracing.",
+          "expected_output": {
+            "must_contain": ["functions", "multiple methods"],
+            "should_contain": ["worked example", "Parson's problem", "code tracing"]
+          }
+        },
+        {
+          "test_id": "INT_002",
+          "prompt": "Create a complete learning session with: diagnostic, concept teaching, and exercise generation.",
+          "expected_output": {
+            "must_contain": ["session", "diagnostic", "teaching", "exercises"],
+            "integrated": true
+          }
+        },
+        {
+          "test_id": "INT_003",
+          "prompt": "Teach loops to a Python beginner who only knows basic arithmetic, using all available methods.",
+          "expected_output": {
+            "must_contain": ["loops", "Python", "beginner"],
+            "should_contain": ["worked example", "practice exercise"],
+            "adapted": true
+          }
+        },
+        {
+          "test_id": "INT_004",
+          "prompt": "Create an adaptive learning path for JavaScript from novice to intermediate level.",
+          "expected_output": {
+            "must_contain": ["learning path", "JavaScript", "adaptive"],
+            "should_contain": ["mastery tracking", "personalization"]
+          }
+        },
+        {
+          "test_id": "INT_005",
+          "prompt": "Demonstrate cross-language teaching by explaining the same concept in Python and Java.",
+          "expected_output": {
+            "must_contain": ["concept", "comparison", "multiple languages"],
+            "should_contain": ["Python", "Java", "transfer"]
+          }
+        }
+      ]
+    },
+    {
+      "category": "effectiveness_metrics",
+      "description": "Test effectiveness metrics and learning analytics",
+      "tests": [
+        {
+          "test_id": "EM_001",
+          "prompt": "Calculate the cognitive load of this exercise on loops with 5 distractors.",
+          "expected_output": {
+            "must_contain": ["cognitive load", "load calculation"],
+            "should_contain": ["intrinsic", "extraneous", "total"]
+          }
+        },
+        {
+          "test_id": "EM_002",
+          "prompt": "Generate a learning effectiveness report for a learner with 75% accuracy.",
+          "expected_output": {
+            "must_contain": ["effectiveness report", "accuracy"],
+            "should_contain": ["learning gain", "recommendations"]
+          }
+        },
+        {
+          "test_id": "EM_003",
+          "prompt": "What is the expected learning improvement when using self-explanation vs. passive reading?",
+          "expected_output": {
+            "must_contain": ["learning improvement", "effect size"],
+            "research_backed": true,
+            "effect_size": "89%"
+          }
+        }
+      ]
+    }
+  ],
+  "evaluation_criteria": {
+    "completeness": 0.95,
+    "research_alignment": 0.90,
+    "production_readiness": 1.00,
+    "educational_effectiveness": 0.85
+  },
+  "metadata": {
+    "last_updated": "2025-01-04",
+    "test_coverage": {
+      "self_explanation": 5,
+      "visual_notional_machine": 5,
+      "debugging_protocol": 5,
+      "knowledge_tracing": 5,
+      "interactive_examples": 5,
+      "language_guides": 5,
+      "parsons_problems": 5,
+      "worked_examples": 5,
+      "cross_language_transfer": 5,
+      "error_explanation": 5,
+      "project_based_learning": 3,
+      "comprehensive_integration": 5,
+      "effectiveness_metrics": 3
+    },
+    "skill_coverage": {
+      "python": "complete",
+      "javascript": "complete",
+      "java": "complete",
+      "cpp": "complete",
+      "rust": "partial",
+      "go": "partial"
+    }
+  }
+}

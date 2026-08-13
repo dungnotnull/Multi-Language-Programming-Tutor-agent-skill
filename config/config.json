@@ -1,0 +1,116 @@
+{
+  "$schema": "./config.schema.json",
+  "version": "1.0.0",
+  "metadata": {
+    "name": "multilanguage-coding-tutor",
+    "description": "Multi-Language Programming Tutor - Production-Grade Claude Skill",
+    "last_updated": "2025-01-04",
+    "author": "Claude Code with skill-creator",
+    "license": "MIT"
+  },
+  "skill": {
+    "name": "multilanguage-coding-tutor",
+    "version": "1.0.0",
+    "mode": "development"
+  },
+  "features": {
+    "parsons_problems": {
+      "enabled": true,
+      "version": "1.0.0"
+    },
+    "worked_examples": {
+      "enabled": true,
+      "version": "1.0.0"
+    },
+    "code_tracing": {
+      "enabled": true,
+      "version": "1.0.0"
+    },
+    "error_literacy": {
+      "enabled": true,
+      "version": "1.0.0"
+    },
+    "project_learning": {
+      "enabled": true,
+      "version": "1.0.0"
+    },
+    "cross_language_transfer": {
+      "enabled": true,
+      "version": "1.0.0"
+    },
+    "diagnostics": {
+      "enabled": true,
+      "version": "1.0.0"
+    },
+    "milestone_tracking": {
+      "enabled": true,
+      "version": "1.0.0"
+    }
+  },
+  "supported_languages": {
+    "python": {
+      "version": "3.11+",
+      "features": ["parsons_problems", "worked_examples", "code_tracing", "error_literacy", "project_learning"],
+      "priority": 1
+    },
+    "javascript": {
+      "version": "ES2022+",
+      "features": ["parsons_problems", "worked_examples", "code_tracing", "error_literacy", "project_learning"],
+      "priority": 2
+    },
+    "java": {
+      "version": "17+",
+      "features": ["parsons_problems", "worked_examples", "code_tracing", "error_literacy", "project_learning"],
+      "priority": 3
+    },
+    "cpp": {
+      "version": "C++20",
+      "features": ["parsons_problems", "worked_examples", "code_tracing", "error_literacy", "project_learning"],
+      "priority": 4
+    },
+    "rust": {
+      "version": "1.70+",
+      "features": ["parsons_problems", "worked_examples", "code_tracing", "error_literacy", "project_learning"],
+      "priority": 5
+    },
+    "go": {
+      "version": "1.21+",
+      "features": ["parsons_problems", "worked_examples", "code_tracing", "error_literacy", "project_learning"],
+      "priority": 6
+    }
+  },
+  "teaching": {
+    "default_difficulty": "intermediate",
+    "difficulty_levels": ["beginner", "intermediate", "advanced", "expert"],
+    "max_exercises_per_session": 10,
+    "hint_threshold": 2,
+    "adaptation_enabled": true,
+    "personalization_enabled": true
+  },
+  "context": {
+    "max_tokens_per_request": 150000,
+    "compression_threshold": 0.8,
+    "reference_loading_strategy": "progressive",
+    "cache_enabled": true,
+    "cache_ttl_seconds": 3600
+  },
+  "evaluation": {
+    "auto_grading_enabled": true,
+    "feedback_detail_level": "detailed",
+    "quality_threshold": 0.8,
+    "plagiarism_check_enabled": false
+  },
+  "logging": {
+    "level": "info",
+    "structured": true,
+    "include_timestamps": true,
+    "include_execution_context": true
+  },
+  "error_handling": {
+    "retry_attempts": 3,
+    "retry_backoff": "exponential",
+    "fallback_enabled": true,
+    "circuit_breaker_enabled": true,
+    "circuit_breaker_threshold": 5
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "./config.schema.json",
+  "version": "1.0.0",
+  "metadata": {
+    "name": "error_policies",
+    "description": "Error handling policies and procedures",
+    "last_updated": "2025-01-04"
+  },
+  "general_policy": {
+    "log_all_errors": true,
+    "user_facing_messages": true,
+    "include_error_codes": true,
+    "sanitize_errors": true,
+    "preserve_stack_traces": false
+  },
+  "retry_policy": {
+    "enabled": true,
+    "max_attempts": 3,
+    "backoff_strategy": "exponential",
+    "initial_delay_ms": 1000,
+    "max_delay_ms": 10000,
+    "multiplier": 2.0,
+    "jitter": true,
+    "jitter_range_ms": 500
+  },
+  "circuit_breaker": {
+    "enabled": true,
+    "failure_threshold": 5,
+    "success_threshold": 2,
+    "timeout_seconds": 60,
+    "half_open_max_calls": 3
+  },
+  "fallback_strategies": {
+    "llm_failure": {
+      "enabled": true,
+      "strategies": ["use_cached_response", "use_simpler_model", "return_template_response"]
+    },
+    "tool_failure": {
+      "enabled": true,
+      "strategies": ["use_alternative_tool", "return_default_value", "skip_operation"]
+    },
+    "reference_load_failure": {
+      "enabled": true,
+      "strategies": ["use_summary", "use_builtin_knowledge", "skip_reference"]
+    },
+    "config_load_failure": {
+      "enabled": true,
+      "strategies": ["use_defaults", "prompt_user", "abort_operation"]
+    }
+  },
+  "error_categories": {
+    "validation_errors": {
+      "severity": "low",
+      "user_message": "Please check your input and try again.",
+      "retry": false,
+      "log": true
+    },
+    "llm_errors": {
+      "severity": "medium",
+      "user_message": "Having trouble connecting. Please try again.",
+      "retry": true,
+      "log": true
+    },
+    "tool_errors": {
+      "severity": "medium",
+      "user_message": "A tool encountered an issue. Using alternative approach.",
+      "retry": true,
+      "log": true
+    },
+    "system_errors": {
+      "severity": "high",
+      "user_message": "A system error occurred. Please try again later.",
+      "retry": false,
+      "log": true
+    },
+    "timeout_errors": {
+      "severity": "medium",
+      "user_message": "Operation timed out. Please try again.",
+      "retry": true,
+      "log": true
+    }
+  },
+  "user_messages": {
+    "generic": "Something went wrong. Please try again.",
+    "retry": "Retrying operation...",
+    "fallback": "Using alternative approach...",
+    "unavailable": "This feature is temporarily unavailable.",
+    "input_error": "Please check your input and try again.",
+    "permission_error": "You don't have permission for this operation."
+  },
+  "monitoring": {
+    "track_error_rates": true,
+    "alert_threshold": 0.1,
+    "alert_window_minutes": 5,
+    "track_by_category": true,
+    "track_by_tool": true
+  }
+}
